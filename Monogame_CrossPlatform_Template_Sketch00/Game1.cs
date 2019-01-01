@@ -86,7 +86,8 @@ graphics.PreferredBackBufferHeight / 2);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(ballTexture, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(ballTexture, ballPosition, null, Color.White, 0f, 
+            new Vector2(ballTexture.Width / 2, ballTexture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
             spriteBatch.End();
 
             base.Draw(gameTime);
