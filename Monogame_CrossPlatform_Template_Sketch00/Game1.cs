@@ -9,7 +9,10 @@ namespace Monogame_CrossPlatform_Template_Sketch00.Desktop
     /// </summary>
     public class Game1 : Game
     {
+        Texture2D textureBall;
+
         GraphicsDeviceManager graphics;
+
         SpriteBatch spriteBatch;
 
         public Game1()
@@ -41,6 +44,7 @@ namespace Monogame_CrossPlatform_Template_Sketch00.Desktop
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            textureBall = Content.Load<Texture2D>("ball");
         }
 
         /// <summary>
@@ -71,13 +75,18 @@ namespace Monogame_CrossPlatform_Template_Sketch00.Desktop
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// 
+
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(textureBall, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
-        }
+        }    
     }
 }
