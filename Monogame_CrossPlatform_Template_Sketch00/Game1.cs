@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -33,7 +34,7 @@ namespace Monogame_CrossPlatform_Template_Sketch00.Desktop
             // TODO: Add your initialization logic here
             ballPosition = new Vector2(graphics.PreferredBackBufferWidth / 2,
 graphics.PreferredBackBufferHeight / 2);
-            ballSpeed = 100f;
+            ballSpeed = 500f;
             base.Initialize();
         }
 
@@ -85,7 +86,11 @@ graphics.PreferredBackBufferHeight / 2);
             if (kstate.IsKeyDown(Keys.Right))
                 ballPosition.X += ballSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            ballPosition.X = Math.Min(Math.Max(ballTexture.Width / 2, ballPosition.X), graphics.PreferredBackBufferWidth - ballTexture.Width / 2);
+            ballPosition.Y = Math.Min(Math.Max(ballTexture.Height / 2, ballPosition.Y), graphics.PreferredBackBufferHeight - ballTexture.Height / 2);
+
             base.Update(gameTime);
+
         }
 
         /// <summary>
